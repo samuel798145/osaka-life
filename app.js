@@ -180,11 +180,11 @@
 
     var mapBlock = "";
     var actions = "";
-    if (it.address) {
+    if (it.address || it.mapQuery) {   // 有地址或坐标(mapQuery)就显示地图
       mapBlock = '<div class="d-map-label">🗺️ 位置（Google 地图）</div>' +
         '<div class="d-map"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="' + embedUrl(it) + '"></iframe></div>';
       actions = '<div class="d-actions">' +
-        '<button class="btn ghost" id="dCopy2">📋 复制地址</button>' +
+        (it.address ? '<button class="btn ghost" id="dCopy2">📋 复制地址</button>' : '') +
         '<a class="btn primary" target="_blank" rel="noopener" href="' + navUrl(it) + '">🧭 Google 导航</a>' +
       "</div>";
     }

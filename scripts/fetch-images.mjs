@@ -56,14 +56,14 @@ function loadData() {
   return sandbox.window.OSAKA_DATA;
 }
 
-async function pexelsPhoto(query, key) {
-  const url = "https://api.pexels.com/v1/search?orientation=portrait&per_page=3&query=" + encodeURIComponent(query);
+// 一次取多张（同一搜索词的多个条目分到不同图，避免千篇一律）
+async function pexelsPhotos(query, key, perPage) {
+  const url = "https://api.pexels.com/v1/search?orientation=portrait&per_page=" + perPage + "&query=" + encodeURIComponent(query);
   const res = await fetch(url, { headers: { Authorization: key } });
   if (res.status === 429) throw new Error("Pexels 限流(429)，稍后再试");
   if (!res.ok) throw new Error("Pexels HTTP " + res.status);
   const d = await res.json();
-  const p = d.photos && d.photos[0];
-  return p ? p.src.large : null;
+  return (d.photos || []).map((p) => p.src.large);
 }
 
 /* 在 data.js 原文里，对应 id 那行后面插入一行 cover，保留缩进与注释 */
@@ -84,15 +84,20 @@ function insertCover(text, id, url) {
   const todo = data.items.filter((it) => !it.cover);
   log(`共 ${data.items.length} 条，需配图 ${todo.length} 条（已有 cover 的跳过）。`);
 
+  // 按搜索词分组：同一词只请求一次，取一批图分给各条目（不同图）
+  const groups = {};
+  todo.forEach((it) => { const q = queryFor(it); (groups[q] || (groups[q] = [])).push(it); });
+
   let ok = 0, fail = 0;
-  for (const it of todo) {
-    const q = queryFor(it);
+  for (const [q, items] of Object.entries(groups)) {
+    let pool = [];
     try {
-      const url = await pexelsPhoto(q, key);
-      if (url) { text = insertCover(text, it.id, url); ok++; log(`  ✅ [${it.id}] "${q}" → ${url.slice(0, 60)}…`); }
-      else { fail++; log(`  ⚠️ [${it.id}] "${q}" 没搜到图`); }
-    } catch (e) { fail++; log(`  ⚠️ [${it.id}] "${q}" 失败：${e.message}`); }
-    await sleep(250); // 对接口友好一点
+      pool = await pexelsPhotos(q, key, Math.min(80, Math.max(10, items.length)));
+    } catch (e) { fail += items.length; log(`  ⚠️ "${q}"（${items.length}条）失败：${e.message}`); continue; }
+    if (!pool.length) { fail += items.length; log(`  ⚠️ "${q}"（${items.length}条）没搜到图`); continue; }
+    items.forEach((it, i) => { text = insertCover(text, it.id, pool[i % pool.length]); ok++; });
+    log(`  ✅ "${q}" → ${items.length} 条配图（${pool.length} 张候选，去重分配）`);
+    await sleep(300); // 对接口友好一点
   }
 
   // 顺手把 updatedAt 更新成今天
