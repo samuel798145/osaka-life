@@ -59,7 +59,15 @@
 ```
 
 - **加模块 / 区域 / 美食分类**：改 `data.js` 顶部的 `modules` / `areas` / `foodCategories`。
-- **封面换真实照片**：当前用 emoji + 渐变占位（带「示例图」角标）。要换真图，给 item 加 `cover: "images/xxx.jpg"` 字段，并在 `app.js` 的 `.cover` 渲染处用 `it.cover` 渲染 `<img>`（搜索 `cover` 即可定位）。
+- **换真实照片（已内置，无需改代码）**：给 item 加
+  `cover: "images/xxx.jpg"`（单张封面）或 `images: ["images/a.jpg","images/b.jpg"]`（多张，详情页显示可点图廊）即可。
+  把图片放进 `images/` 目录，或直接用 https 链接。不填则用 emoji 占位。
+
+### ⚠️ 关于图片来源（重要）
+**别直接搬运小红书上的图**：那些图归原作者版权（小红书 ToS 也禁止转载），而且小红书 CDN 有**防盗链**，外链到本站多半会 403 裂图。请用：
+- 你**自己拍的 / 自己在小红书发布的**照片（你拥有版权）✅
+- 免费可商用图库 **Unsplash / Pexels** ✅
+- 商家**官方授权**图 ✅
 
 ---
 

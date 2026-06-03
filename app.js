@@ -31,6 +31,7 @@
   /* ---------- 工具 ---------- */
   function themeOf(it) { return THEME[it.module === "food" ? it.category : it.module] || THEME.travel; }
   function coverBg(it) { var g = themeOf(it).grad; return "linear-gradient(150deg," + g[0] + "," + g[1] + ")"; }
+  function coverSrc(it) { return it.cover || (it.images && it.images[0]) || ""; }   // 真实封面图（没有则用 emoji 占位）
   function ratioOf(id) { return RATIOS[id % RATIOS.length]; }
   function moduleLabel(key) {
     for (var i = 0; i < DATA.modules.length; i++) if (DATA.modules[i].key === key) return DATA.modules[i].label;
@@ -101,11 +102,14 @@
     $("#feed").innerHTML = list.map(function (it) {
       var th = themeOf(it);
       var au = it.author || { name: "Osaka Life", avatar: "🌸" };
+      var src = coverSrc(it);
+      var coverInner = '<span class="chip" style="background:' + th.color + '">' + th.label + "</span>" +
+        (src
+          ? '<img class="cover-img" loading="lazy" src="' + esc(src) + '" alt="">'
+          : '<span class="emoji">' + (it.emoji || "🌸") + '</span><span class="ph-tag">示例图 · 换成实拍</span>');
       return '<article class="card" data-id="' + it.id + '">' +
         '<div class="cover" style="aspect-ratio:' + ratioOf(it.id) + ";background:" + coverBg(it) + '">' +
-          '<span class="chip" style="background:' + th.color + '">' + th.label + "</span>" +
-          '<span class="emoji">' + (it.emoji || "🌸") + "</span>" +
-          '<span class="ph-tag">示例图 · 换成实拍</span>' +
+          coverInner +
         "</div>" +
         '<div class="body">' +
           '<div class="title">' + esc(it.title) + "</div>" +
@@ -132,6 +136,18 @@
     return '<div class="d-row"><span class="e">' + emoji + '</span><span class="k">' + key + '</span><span class="v">' + valHtml + "</span></div>";
   }
 
+  // 详情页大图：有真实图就显示图片，否则回退到 emoji 占位
+  function setHero(src, emoji) {
+    var img = $("#dCoverImg"), em = $("#dEmoji"), tag = $("#dCoverTag");
+    if (src) {
+      img.src = src; img.style.display = "block";
+      em.style.display = "none"; if (tag) tag.style.display = "none";
+    } else {
+      img.removeAttribute("src"); img.style.display = "none";
+      em.style.display = ""; em.textContent = emoji; if (tag) tag.style.display = "";
+    }
+  }
+
   function openDetail(id) {
     var it = null;
     for (var i = 0; i < DATA.items.length; i++) if (DATA.items[i].id === id) { it = DATA.items[i]; break; }
@@ -141,7 +157,7 @@
     var au = it.author || { name: "Osaka Life", avatar: "🌸" };
 
     $("#dCover").style.background = coverBg(it);
-    $("#dEmoji").textContent = it.emoji || "🌸";
+    setHero(coverSrc(it), it.emoji || "🌸");
 
     var chips = '<span class="d-chip" style="background:' + th.color + '">' + th.label + "</span>";
     if (it.area) chips += '<span class="d-chip" style="background:#5b5d6b">📍 ' + esc(it.area) + "</span>";
@@ -154,6 +170,13 @@
     if (it.address) info += infoRow("📍", "地址", esc(it.address) + '<span class="copy" id="dCopy">复制</span>');
 
     var tags = (it.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("");
+
+    var gallery = "";
+    if (it.images && it.images.length) {
+      gallery = '<div class="d-gallery">' +
+        it.images.map(function (u) { return '<img loading="lazy" src="' + esc(u) + '" alt="">'; }).join("") +
+        "</div>";
+    }
 
     var mapBlock = "";
     var actions = "";
@@ -176,6 +199,7 @@
         '<div class="it"><span class="v">' + esc(it.collects || "0") + '</span><span class="k">收藏</span></div>' +
         '<div class="it"><span class="v">' + esc(it.comments || "0") + '</span><span class="k">评论</span></div>' +
       "</div>" +
+      gallery +
       '<div class="d-desc">' + esc(it.desc) + "</div>" +
       (info ? '<div class="d-info">' + info + "</div>" : "") +
       (tags ? '<div class="d-tags">' + tags + "</div>" : "") +
@@ -186,6 +210,11 @@
     var copyAddr = function () { copyText(it.address); };
     if ($("#dCopy")) $("#dCopy").onclick = copyAddr;
     if ($("#dCopy2")) $("#dCopy2").onclick = copyAddr;
+
+    // 点图廊小图切换大图
+    Array.prototype.forEach.call($("#dBody").querySelectorAll(".d-gallery img"), function (im) {
+      im.onclick = function () { setHero(im.src, ""); };
+    });
 
     $("#dBody").scrollTop = 0;
     $("#scrim").classList.add("show");

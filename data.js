@@ -12,7 +12,9 @@
      module    所属模块：'food' | 'travel' | 'events' | 'social' | 'market'
      category  仅【美食】用：'chinese' | 'japanese' | 'thai' | 'korean'
      area      区域（用于「区域搜索」），见下方 AREAS
-     emoji     占位封面/头像用的 emoji（换成真实图见 README 的 cover 字段）
+     emoji     没有真实图时显示的占位 emoji
+     cover     封面图（可选）：'images/xxx.jpg' 或 https 链接；填了就显示真实图，不填用 emoji
+     images    多图（可选）：['images/a.jpg','images/b.jpg']，详情页显示可点的小图廊
      title     标题
      author    作者：{ name, avatar(emoji) }   —— 对标小红书笔记作者
      likes / collects / comments   互动数（字符串，可带 w）
