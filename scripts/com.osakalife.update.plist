@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd 定时任务：每天 07:00 与 19:00 运行内容更新脚本。
+  安装（在项目根目录执行）：
+    cp scripts/com.osakalife.update.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.osakalife.update.plist
+  停用：
+    launchctl unload ~/Library/LaunchAgents/com.osakalife.update.plist
+  立即测试一次：
+    launchctl start com.osakalife.update
+  日志见 scripts/update.log。
+  （注意：本机需保持开机/未睡眠才会触发；脚本默认是占位，接入数据源后才会真正更新。）
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.osakalife.update</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>cd /Users/samuel/Documents/osaka-life &amp;&amp; node scripts/update-content.mjs &gt;&gt; scripts/update.log 2&gt;&amp;1</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Hour</key><integer>7</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Hour</key><integer>19</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+  </array>
+
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/Users/samuel/Documents/osaka-life/scripts/update.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/samuel/Documents/osaka-life/scripts/update.log</string>
+</dict>
+</plist>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>大阪生活 · Osaka Life — 美食 · 旅游 · 同城 · 交友 · 二手</title>
+<meta name="description" content="对标小红书的大阪生活指南：美食（中餐/日料/泰餐/韩餐）、日本旅游、同城约饭、交友搭子、二手闲置，支持区域搜索，全中文。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand-row">
+        <div class="logo">
+          <span class="mark">🌸</span>
+          <span>大阪生活</span>
+          <span class="en">Osaka Life</span>
+          <small>跟着小红书过日子</small>
+        </div>
+        <div class="search">
+          <span class="ico">🔍</span>
+          <input id="search" type="text" placeholder="搜店名 / 关键词 / 标签…" autocomplete="off" />
+          <button class="clear" id="searchClear" title="清空">✕</button>
+        </div>
+      </div>
+      <nav class="modules" id="modules"></nav>
+    </div>
+    <div class="subbar">
+      <div class="subbar-inner">
+        <div class="cats" id="cats"></div>
+        <label class="area-select">
+          📍 区域
+          <select id="areaSelect"></select>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="feed-head">
+      <h2 id="feedTitle">美食</h2>
+      <span class="count" id="feedCount"></span>
+      <span class="updated" id="updated"></span>
+    </div>
+    <div class="feed" id="feed"></div>
+    <div class="empty" id="empty" style="display:none">
+      <div class="e">🍙</div>
+      <p>这个分类/区域还没有内容，换个筛选条件试试，或在 <b>data.js</b> 里添加～</p>
+    </div>
+  </main>
+
+  <footer class="foot" id="foot"></footer>
+
+  <!-- Detail drawer -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="d-cover" id="dCover">
+      <span class="emoji" id="dEmoji">🍜</span>
+      <span class="ph-tag">示例封面图 · 替换成你的实拍</span>
+      <button class="d-close" id="dClose" title="关闭">✕</button>
+    </div>
+    <div class="d-body" id="dBody"></div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- 数据 + 逻辑（普通脚本，支持双击 file:// 直接打开） -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
