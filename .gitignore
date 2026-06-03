@@ -11,3 +11,8 @@ Thumbs.db
 node_modules/
 *.log
 scripts/update.log
+
+# Secrets — never commit API keys
+scripts/pexels.key
+*.key
+.env

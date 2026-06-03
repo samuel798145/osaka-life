@@ -63,6 +63,18 @@
   `cover: "images/xxx.jpg"`（单张封面）或 `images: ["images/a.jpg","images/b.jpg"]`（多张，详情页显示可点图廊）即可。
   把图片放进 `images/` 目录，或直接用 https 链接。不填则用 emoji 占位。
 
+#### 一键自动配图（Pexels 免费图库）
+`scripts/fetch-images.mjs` 会给【还没有 cover】的条目各拉一张同类美食/景点的真实图填进去：
+```bash
+PEXELS_API_KEY=你的key node scripts/fetch-images.mjs
+# 或把 key 写进 scripts/pexels.key（已在 .gitignore，不会提交），然后直接：
+node scripts/fetch-images.mjs
+```
+- 已有 `cover` 的（含你放的实拍）会**跳过、不覆盖**。想换某条：删掉它那行 `cover` 再跑一次。
+- 新条目可加 `imgQuery: "english search term"` 控制搜索词。
+- ⚠️ Pexels 是**同类通用图**，不是那家店的实拍；要精准就放自己的图。
+- 免费 key 申请（不用信用卡）：https://www.pexels.com/api/
+
 ### ⚠️ 关于图片来源（重要）
 **别直接搬运小红书上的图**：那些图归原作者版权（小红书 ToS 也禁止转载），而且小红书 CDN 有**防盗链**，外链到本站多半会 403 裂图。请用：
 - 你**自己拍的 / 自己在小红书发布的**照片（你拥有版权）✅

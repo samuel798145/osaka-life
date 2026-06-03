@@ -66,6 +66,7 @@ window.OSAKA_DATA = {
     /* ============================ 美食 · 中餐 ============================ */
     {
       id: 101, module: "food", category: "chinese", area: "难波/心斋桥", emoji: "🌶️",
+      cover: "https://images.pexels.com/photos/30915727/pexels-photo-30915727.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "难波这家四川火锅 麻辣够味｜在大阪吃到家乡的辣",
       author: { name: "关西吃货阿May", avatar: "🍙" },
       likes: "2.3w", collects: "9876", comments: "1203",
@@ -75,6 +76,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 102, module: "food", category: "chinese", area: "梅田/大阪站", emoji: "🍜",
+      cover: "https://images.pexels.com/photos/19252760/pexels-photo-19252760.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "梅田西安刀削面｜肉夹馍+油泼面 北方胃的福音",
       author: { name: "浪速生活手帐", avatar: "🐼" },
       likes: "8654", collects: "5421", comments: "432",
@@ -86,6 +88,7 @@ window.OSAKA_DATA = {
     /* ============================ 美食 · 日料 ============================ */
     {
       id: 111, module: "food", category: "japanese", area: "难波/心斋桥", emoji: "🦀",
+      cover: "https://images.pexels.com/photos/28559495/pexels-photo-28559495.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "かに道楽 道顿堀本店｜大螃蟹招牌下吃蟹会席",
       author: { name: "Yuki在大阪", avatar: "🌸" },
       likes: "4.1w", collects: "1.8w", comments: "2098",
@@ -95,6 +98,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 112, module: "food", category: "japanese", area: "难波/心斋桥", emoji: "🍜",
+      cover: "https://images.pexels.com/photos/15085069/pexels-photo-15085069.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "一兰拉面 道顿堀本馆｜24小时 一人食隔间豚骨",
       author: { name: "大阪小晴", avatar: "🐰" },
       likes: "6.7w", collects: "3.2w", comments: "3401",
@@ -104,6 +108,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 113, module: "food", category: "japanese", area: "难波/心斋桥", emoji: "🍣",
+      cover: "https://images.pexels.com/photos/11594188/pexels-photo-11594188.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "大起水产 回转寿司｜平价新鲜 一盘100円起",
       author: { name: "关西吃货阿May", avatar: "🍙" },
       likes: "1.5w", collects: "8932", comments: "654",
@@ -113,6 +118,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 114, module: "food", category: "japanese", area: "难波/心斋桥", emoji: "🥘",
+      cover: "https://images.pexels.com/photos/23614255/pexels-photo-23614255.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "美津の 大阪烧｜米其林必比登 山药烧入口即化",
       author: { name: "浪速生活手帐", avatar: "🐼" },
       likes: "5.6w", collects: "2.7w", comments: "1890",
@@ -124,6 +130,7 @@ window.OSAKA_DATA = {
     /* ============================ 美食 · 泰餐 ============================ */
     {
       id: 121, module: "food", category: "thai", area: "梅田/大阪站", emoji: "🍤",
+      cover: "https://images.pexels.com/photos/20258248/pexels-photo-20258248.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "梅田泰国菜 Mango Tree｜冬阴功+绿咖喱 正宗泰味",
       author: { name: "Yuki在大阪", avatar: "🌸" },
       likes: "7321", collects: "4210", comments: "388",
@@ -133,6 +140,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 122, module: "food", category: "thai", area: "美国村", emoji: "🥗",
+      cover: "https://images.pexels.com/photos/34699471/pexels-photo-34699471.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "美国村泰式小馆｜青木瓜沙拉够酸辣 街头风",
       author: { name: "美国村潮人", avatar: "🛹" },
       likes: "3120", collects: "1876", comments: "210",
@@ -144,6 +152,7 @@ window.OSAKA_DATA = {
     /* ============================ 美食 · 韩餐 ============================ */
     {
       id: 131, module: "food", category: "korean", area: "鹤桥(韩国城)", emoji: "🥩",
+      cover: "https://images.pexels.com/photos/18426528/pexels-photo-18426528.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "鹤桥韩国城烤肉｜炭火和牛 烟火气拉满",
       author: { name: "大阪小晴", avatar: "🐰" },
       likes: "2.8w", collects: "1.4w", comments: "1560",
@@ -153,6 +162,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 132, module: "food", category: "korean", area: "鹤桥(韩国城)", emoji: "🍲",
+      cover: "https://images.pexels.com/photos/35064872/pexels-photo-35064872.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "鹤桥部队锅+芝士排骨｜两个人吃到扶墙",
       author: { name: "关西吃货阿May", avatar: "🍙" },
       likes: "1.9w", collects: "1.1w", comments: "920",
@@ -164,6 +174,7 @@ window.OSAKA_DATA = {
     /* ============================ 日本旅游 ============================ */
     {
       id: 201, module: "travel", area: "京桥/大阪城", emoji: "🏯",
+      cover: "https://images.pexels.com/photos/30813051/pexels-photo-30813051.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "大阪城公园｜天守阁登顶+护城河 一日漫步路线",
       author: { name: "Yuki在大阪", avatar: "🌸" },
       likes: "5.2w", collects: "3.6w", comments: "2210",
@@ -173,6 +184,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 202, module: "travel", area: "难波/心斋桥", emoji: "🎐",
+      cover: "https://images.pexels.com/photos/34728996/pexels-photo-34728996.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "道顿堀｜固力果跑跑人+运河夜景 必拍清单",
       author: { name: "浪速生活手帐", avatar: "🐼" },
       likes: "8.9w", collects: "4.1w", comments: "3902",
@@ -182,6 +194,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 203, module: "travel", area: "新世界/通天阁", emoji: "🗼",
+      cover: "https://images.pexels.com/photos/15924866/pexels-photo-15924866.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "新世界 & 通天阁｜昭和复古下町 串炸一条街",
       author: { name: "大阪小晴", avatar: "🐰" },
       likes: "3.7w", collects: "2.2w", comments: "1340",
@@ -191,6 +204,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 204, module: "travel", area: "港区/天保山", emoji: "🐳",
+      cover: "https://images.pexels.com/photos/27555660/pexels-photo-27555660.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "海游馆｜世界最大级水族馆 鲸鲨太治愈",
       author: { name: "Yuki在大阪", avatar: "🌸" },
       likes: "4.4w", collects: "2.9w", comments: "1670",
@@ -200,6 +214,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 205, module: "travel", area: "梅田/大阪站", emoji: "🌇",
+      cover: "https://images.pexels.com/photos/19577642/pexels-photo-19577642.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "梅田蓝天大厦 空中庭园｜大阪最美黄昏展望台",
       author: { name: "美国村潮人", avatar: "🛹" },
       likes: "3.1w", collects: "1.9w", comments: "1102",
@@ -209,6 +224,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 206, module: "travel", area: "此花区(USJ)", emoji: "🎢",
+      cover: "https://images.pexels.com/photos/3888315/pexels-photo-3888315.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "日本环球影城 USJ｜任天堂世界+哈利波特 攻略",
       author: { name: "关西吃货阿May", avatar: "🍙" },
       likes: "12w", collects: "8.3w", comments: "6201",
@@ -220,6 +236,7 @@ window.OSAKA_DATA = {
     /* ============================ 同城约饭 / 活动 ============================ */
     {
       id: 301, module: "events", area: "难波/心斋桥", emoji: "🍲",
+      cover: "https://images.pexels.com/photos/16143648/pexels-photo-16143648.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "本周六晚 难波四川火锅局｜还差3-4人 AA",
       author: { name: "大阪小晴", avatar: "🐰" },
       likes: "326", collects: "88", comments: "142",
@@ -229,6 +246,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 302, module: "events", area: "京桥/大阪城", emoji: "🌸",
+      cover: "https://images.pexels.com/photos/31588362/pexels-photo-31588362.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "樱花季 大阪城赏樱野餐团｜带点零食饮料就行",
       author: { name: "Yuki在大阪", avatar: "🌸" },
       likes: "512", collects: "203", comments: "176",
@@ -240,6 +258,7 @@ window.OSAKA_DATA = {
     /* ============================ 交友 / 搭子 ============================ */
     {
       id: 401, module: "social", area: "关西/其他", emoji: "📚",
+      cover: "https://images.pexels.com/photos/5409045/pexels-photo-5409045.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "找日语学习搭子｜N2备考互相监督 线上线下都行",
       author: { name: "浪速生活手帐", avatar: "🐼" },
       likes: "289", collects: "156", comments: "98",
@@ -249,6 +268,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 402, module: "social", area: "关西/其他", emoji: "🧳",
+      cover: "https://images.pexels.com/photos/20704802/pexels-photo-20704802.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "5月关西旅游搭子｜京都奈良和歌山 拼车拼住",
       author: { name: "美国村潮人", avatar: "🛹" },
       likes: "431", collects: "210", comments: "133",
@@ -260,6 +280,7 @@ window.OSAKA_DATA = {
     /* ============================ 二手 / 闲置 ============================ */
     {
       id: 501, module: "market", area: "梅田/大阪站", emoji: "🪑",
+      cover: "https://images.pexels.com/photos/34956532/pexels-photo-34956532.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "搬家转让｜宜家书桌+人体工学椅 整套打包便宜出",
       author: { name: "关西吃货阿May", avatar: "🍙" },
       likes: "176", collects: "64", comments: "57",
@@ -269,6 +290,7 @@ window.OSAKA_DATA = {
     },
     {
       id: 502, module: "market", area: "天王寺/阿倍野", emoji: "🚲",
+      cover: "https://images.pexels.com/photos/33262917/pexels-photo-33262917.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
       title: "9成新通勤自行车转让｜带车筐车锁 天王寺自取",
       author: { name: "大阪小晴", avatar: "🐰" },
       likes: "203", collects: "71", comments: "44",
