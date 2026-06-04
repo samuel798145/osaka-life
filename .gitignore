@@ -16,3 +16,9 @@ scripts/update.log
 scripts/pexels.key
 *.key
 .env
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
