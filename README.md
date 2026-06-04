@@ -75,6 +75,20 @@ node scripts/fetch-images.mjs
 - ⚠️ Pexels 是**同类通用图**，不是那家店的实拍；要精准就放自己的图。
 - 免费 key 申请（不用信用卡）：https://www.pexels.com/api/
 
+#### 批量导入餐厅（OpenStreetMap，免费·无需 key/卡）
+`scripts/import-osm.mjs` 用 Overpass API 按菜系拉大阪真实餐厅（名称+坐标）：
+```bash
+node scripts/import-osm.mjs --cuisine chinese --max 400
+node scripts/import-osm.mjs --cuisine japanese --max 150   # korean / thai 同理
+node scripts/fetch-images.mjs   # 给新导入的条目补 Pexels 图
+```
+- 按 OSM id + 重名去重，可反复跑；导入项标记为「地图收录·待完善」。
+- ⚠️ OSM 只有**名称+坐标**：店名多为日文、可能有个别标错、**没有点评/招牌菜/实拍图**。
+  按需在 `data.js` 里删噪音、补描述、换实拍图。
+
+> **同城约饭 / 交友搭子**是「用户帖」类内容，**没有公开数据源**（地图里没有、也不能爬）。
+> 站内是**示例帖**，真实内容需要用户投稿——后续可接一个投稿表单（见文末）。
+
 ### ⚠️ 关于图片来源（重要）
 **别直接搬运小红书上的图**：那些图归原作者版权（小红书 ToS 也禁止转载），而且小红书 CDN 有**防盗链**，外链到本站多半会 403 裂图。请用：
 - 你**自己拍的 / 自己在小红书发布的**照片（你拥有版权）✅

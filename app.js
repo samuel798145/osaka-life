@@ -27,6 +27,7 @@
   var curArea = "all";
   var kw = "";
   var activeId = null;
+  var RENDER_CAP = 150; // 单次最多渲染卡片数；数据量大时用分类/区域/搜索缩小范围
 
   /* ---------- 工具 ---------- */
   function themeOf(it) { return THEME[it.module === "food" ? it.category : it.module] || THEME.travel; }
@@ -98,8 +99,9 @@
   /* ---------- 渲染：瀑布流 ---------- */
   function renderFeed() {
     var list = filtered();
+    var shown = list.slice(0, RENDER_CAP);
     $("#empty").style.display = list.length ? "none" : "block";
-    $("#feed").innerHTML = list.map(function (it) {
+    $("#feed").innerHTML = shown.map(function (it) {
       var th = themeOf(it);
       var au = it.author || { name: "Osaka Life", avatar: "🌸" };
       var src = coverSrc(it);
@@ -125,7 +127,8 @@
       el.onclick = function () { openDetail(+el.dataset.id); };
     });
     $("#feedTitle").textContent = moduleLabel(curModule);
-    $("#feedCount").textContent = "共 " + list.length + " 条";
+    $("#feedCount").textContent = "共 " + list.length + " 条" +
+      (list.length > shown.length ? "（显示前 " + shown.length + "，用分类/区域/搜索缩小范围）" : "");
     $("#updated").textContent = DATA.updatedAt ? "更新于 " + DATA.updatedAt : "";
   }
 
